@@ -1,0 +1,66 @@
+<div class="home-page">
+    <div class="banner">
+        <div class="container">
+            <h1 class="logo-font">conduit</h1>
+            <p>A place to share your knowledge.</p>
+        </div>
+    </div>
+
+    <div class="container page">
+        <div class="row">
+            <div class="col-md-9">
+                <div class="feed-toggle">
+                    <ul class="nav nav-pills outline-active">
+                        <li class="nav-item">
+                            <%= link_to "Your Feed", "/", class: "nav-link" %>
+                        </li>
+                        <li class="nav-item">
+                            <%= link_to "Global Feed", "/", class: "nav-link active" %>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="article-preview">
+                    <%= link_to '/article/how-to-build-webapps-that-scale', class: 'preview-link' do %>
+                    <h1>How to build webapps that scale</h1>
+                    <p>This is the description for the post.</p>
+                    <span>Read more...</span>
+                    <ul class="tag-list">
+                        <li class="tag-default tag-pill tag-outline">realworld</li>
+                        <li class="tag-default tag-pill tag-outline">implementations</li>
+                    </ul>
+                    <% end %>
+                </div>
+
+                <div class="article-preview">
+                    <%= link_to '/article/the-song-you', class: 'preview-link' do %>
+                    <h1>The song you won't ever stop singing. No matter how hard you try.</h1>
+                    <p>This is the description for the post.</p>
+                    <span>Read more...</span>
+                    <ul class="tag-list">
+                        <li class="tag-default tag-pill tag-outline">realworld</li>
+                        <li class="tag-default tag-pill tag-outline">implementations</li>
+                    </ul>
+                    <% end %>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="sidebar">
+                    <p>Popular Tags</p>
+
+                    <div class="tag-list">
+                        <%= link_to "programming", "/", class: "tag-pill tag-default" %>
+                        <%= link_to "javascript", "/", class: "tag-pill tag-default" %>
+                        <%= link_to "emberjs", "/", class: "tag-pill tag-default" %>
+                        <%= link_to "angularjs", "/", class: "tag-pill tag-default" %>
+                        <%= link_to "react", "/", class: "tag-pill tag-default" %>
+                        <%= link_to "mean", "/", class: "tag-pill tag-default" %>
+                        <%= link_to "node", "/", class: "tag-pill tag-default" %>
+                        <%= link_to "rails", "/", class: "tag-pill tag-default" %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
