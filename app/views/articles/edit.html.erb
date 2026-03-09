@@ -6,28 +6,31 @@
                     <li>That title is required</li>
                 </ul>
 
-                <form>
-                    <fieldset>
-                        <fieldset class="form-group">
-                            <input type="text" class="form-control form-control-lg" placeholder="Article Title" />
-                        </fieldset>
-                        <fieldset class="form-group">
-                            <input type="text" class="form-control" placeholder="What's this article about?" />
-                        </fieldset>
-                        <fieldset class="form-group">
-                            <textarea class="form-control" rows="8" placeholder="Write your article (in markdown)"></textarea>
-                        </fieldset>
-                        <fieldset class="form-group">
-                            <input type="text" class="form-control" placeholder="Enter tags" />
-                            <div class="tag-list">
-                                <span class="tag-default tag-pill"> <i class="ion-close-round"></i> tag </span>
-                            </div>
-                        </fieldset>
-                        <button class="btn btn-lg pull-xs-right btn-primary" type="button">
-                            Publish Article
-                        </button>
+                <%= form_with model: @article do |f| %>
+                <fieldset>
+                    <fieldset class="form-group">
+                        <%= f.text_field :title, class: "form-control form-control-lg", placeholder: "Article Title", required: true %>
                     </fieldset>
-                </form>
+                    <fieldset class="form-group">
+                        <%= f.text_field :about, class: "form-control", placeholder: "What's this article about?" %>
+                    </fieldset>
+                    <fieldset class="form-group">
+                        <%= f.text_area :body, class: "form-control", placeholder: "Write your article (in markdown)", rows: "8" %>
+                    </fieldset>
+                    <fieldset class="form-group">
+                        <%= f.text_field :name, value: @tag, class: "form-control", placeholder: "タグ(半角スペースで複数個登録できます)" %>
+                        <div class="tag-list">
+                            <% @article.tags.each do |tag| %>
+                            <span class="tag-default tag-pill">
+                                <i class="ion-close-round"></i>
+                                <%= tag.name %>
+                            </span>
+                            <% end %>
+                        </div>
+                    </fieldset>
+                    <%= f.submit "Publish Article", class: "btn btn-lg pull-xs-right btn-primary" %>
+                </fieldset>
+                <% end %>
             </div>
         </div>
     </div>

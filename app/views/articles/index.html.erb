@@ -1,31 +1,61 @@
-<div class="article-page">
+<div class="home-page">
     <div class="banner">
         <div class="container">
-            <h1>How to build webapps that scale</h1>
-
-            <div class="article-meta">
-                <button class="btn btn-sm btn-outline-secondary">
-                    <i class="ion-edit"></i> Edit Article
-                </button>
-                <button class="btn btn-sm btn-outline-danger">
-                    <i class="ion-trash-a"></i> Delete Article
-                </button>
-            </div>
+            <h1 class="logo-font">conduit</h1>
+            <p>A place to share your knowledge.</p>
         </div>
     </div>
 
     <div class="container page">
-        <div class="row article-content">
-            <div class="col-md-12">
-                <p>
-                    Web development technologies have evolved at an incredible clip over the past few years.
-                </p>
-                <h2 id="introducing-ionic">Introducing RealWorld.</h2>
-                <p>It's a great solution for learning how other frameworks work.</p>
-                <ul class="tag-list">
-                    <li class="tag-default tag-pill tag-outline">realworld</li>
-                    <li class="tag-default tag-pill tag-outline">implementations</li>
-                </ul>
+        <div class="row">
+            <div class="col-md-9">
+                <div class="feed-toggle">
+                    <ul class="nav nav-pills outline-active border-bottom border-secondary-subtle">
+                        <li class="nav-item">
+                            <%= link_to "Your Feed", "/", class: "nav-link" %>
+                        </li>
+                        <li class="nav-item">
+                            <%= link_to "Global Feed", "/", class: "nav-link active" %>
+                        </li>
+                    </ul>
+                </div>
+
+                <% @articles.each do |article| %>
+                <div class="article-preview border-bottom border-secondary-subtle py-4">
+                    <%= link_to article_path(article), class: 'preview-link' do %>
+                    <h1>
+                        <%= article.title %>
+                    </h1>
+                    <p class="text-body-tertiary">
+                        <%= article.about %>
+                    </p>
+                    <div class="d-flex justify-content-between">
+                        <span class="text-body-tertiary">Read more...</span>
+                        <ul class="tag-list d-flex gap-2 ps-0 mb-0">
+                            <% article.tags.each do |tag| %>
+                            <li class="tag-default tag-pill tag-outline p-1 border border-secondary-subtle rounded-pill text-body-tertiary">
+                                <%= tag.name %>
+                            </li>
+                            <% end %>
+                        </ul>
+                    </div>
+                    <% end %>
+                </div>
+                <% end %>
+                <div class="text-center mt-4">
+                    <%= link_to 'create', new_article_path, class: "btn btn-lg pull-xs-right btn-primary" %>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="sidebar">
+                    <p>Popular Tags</p>
+                    <div class="tag-list d-flex flex-wrap gap-2">
+                        <% @tags.each do |tag| %>
+                        <%= link_to tag.name, "/", class: "tag-pill tag-default p-2 border border-secondary-subtle rounded-pill bg-secondary text-light" %>
+                        <% end %>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

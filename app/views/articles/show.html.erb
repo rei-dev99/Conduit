@@ -1,0 +1,29 @@
+<div class="article-page">
+    <div class="banner">
+        <div class="container">
+            <h1><%= @article.title %></h1>
+            <div class="article-meta">
+                <%= link_to edit_article_path(@article), class: "btn btn-sm btn-outline-secondary" do %>
+                <i class="ion-edit"></i> Edit Article
+                <% end %>
+                <%= link_to @article, data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: "btn btn-sm btn-outline-danger" do %>
+                <i class="ion-trash-a"></i> Delete Article
+                <% end %>
+            </div>
+        </div>
+    </div>
+    <div class="container page">
+        <div class="row article-content border-bottom border-secondary-subtle">
+            <div class="col-md-12">
+                <div class="pb-4"><%= @article.body %></div>
+                <ul class="tag-list d-flex gap-2 ps-0">
+                    <% @article.tags.each do |tag| %>
+                    <li class="tag-default tag-pill tag-outline p-1 border border-secondary-subtle rounded-pill text-body-tertiary">
+                        <%= tag.name %>
+                    </li>
+                    <% end %>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
