@@ -14,6 +14,12 @@ class ApplicationController < ActionController::Base
     redirect_to signin_path unless logged_in?
   end
 
+  def redirect_if_authenticated
+    if logged_in?
+      redirect_to articles_path
+    end
+  end
+
   def logged_in_user
     unless logged_in?
       redirect_to signin_path

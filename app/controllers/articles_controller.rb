@@ -2,7 +2,7 @@ class ArticlesController < ApplicationController
   before_action :logged_in_user, only: [:edit, :update, :destroy]
 
   def index
-    @articles = Article.all
+    @articles = Article.all.page(params[:page])
     @tags = Tag.all
   end
 
@@ -15,7 +15,7 @@ class ArticlesController < ApplicationController
   end
 
   def create
-    @article = Article.new(article_params)
+    @article = current_user.articles.build(article_params)
 
     if @article.save
       input_tags = tag_params.split(' ')

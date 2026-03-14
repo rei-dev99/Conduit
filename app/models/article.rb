@@ -1,6 +1,7 @@
 class Article < ApplicationRecord
   has_many :taggings, dependent: :destroy
   has_many :tags,      through: :taggings
+  belongs_to :user
 
   def create_tag(input_tags)
     input_tags.each do |tag|
