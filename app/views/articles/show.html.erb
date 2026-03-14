@@ -2,6 +2,7 @@
     <div class="banner">
         <div class="container">
             <h1><%= @article.title %></h1>
+            <% if current_user == @article.user %>
             <div class="article-meta">
                 <%= link_to edit_article_path(@article), class: "btn btn-sm btn-outline-secondary" do %>
                 <i class="ion-edit"></i> Edit Article
@@ -10,6 +11,10 @@
                 <i class="ion-trash-a"></i> Delete Article
                 <% end %>
             </div>
+            <% end %>
+            <p>
+                <%= @article.user.email %>
+            </p>
         </div>
     </div>
     <div class="container page">
@@ -25,5 +30,8 @@
                 </ul>
             </div>
         </div>
+    </div>
+    <div class="text-center mt-4">
+        <%= link_to 'ホームへ戻る' ,root_path, class: "btn btn-sm btn-outline-secondary" %>
     </div>
 </div>
