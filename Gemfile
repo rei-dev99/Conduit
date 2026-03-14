@@ -18,6 +18,9 @@ gem "stimulus-rails"
 gem "jbuilder"
 # ハッシュ認証
 gem 'bcrypt', '~> 3.1.7'
+# ページネーション
+gem 'kaminari'
+gem 'bootstrap5-kaminari-views'
 
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
 # gem "bcrypt", "~> 3.1.7"
