@@ -4,24 +4,27 @@
             <div class="col-md-6 offset-md-3 col-xs-12">
                 <h1 class="text-center">Sign up</h1>
                 <p class="text-center">
-                    <a href="/login">Already Have an account?</a>
+                    <%= link_to "Already Have an account?", "/signin" %>
                 </p>
 
                 <ul class="error-messages">
                     <li>That email is already taken</li>
                 </ul>
 
-                <form>
-                    <fieldset class="form-group">
-                        <input class="form-control form-control-lg" type="text" placeholder="Email" />
-                    </fieldset>
-                    <fieldset class="form-group">
-                        <input class="form-control form-control-lg" type="password" placeholder="Password" />
-                    </fieldset>
-                    <div class="text-right">
-                        <button class=" btn btn-lg btn-primary pull-xs-right">Sign up</button>
-                    </div>
-                </form>
+                <%= form_with model: @user, url: signup_path do |f| %>
+                <fieldset class="form-group">
+                    <%= f.email_field :email, class: "form-control form-control-lg", placeholder: "Email", required: true %>
+                </fieldset>
+                <fieldset class="form-group">
+                    <%= f.password_field :password, class: "form-control form-control-lg", placeholder: "password", required: true %>
+                </fieldset>
+                <fieldset class="form-group">
+                    <%= f.password_field :password_confirmation, class: "form-control form-control-lg", placeholder: "password_confirmation", required: true %>
+                </fieldset>
+                <div class="text-right">
+                    <%= f.submit "Sign up", class: "btn btn-lg pull-xs-right btn-primary" %>
+                </div>
+                <% end %>
             </div>
         </div>
     </div>
