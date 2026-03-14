@@ -4,24 +4,24 @@
             <div class="col-md-6 offset-md-3 col-xs-12">
                 <h1 class="text-center">Sign in</h1>
                 <p class="text-center">
-                    <a href="/register">Need an account?</a>
+                    <%= link_to "Need an account?", "/signup" %>
                 </p>
 
                 <ul class="error-messages">
                     <li>That email is already taken</li>
                 </ul>
 
-                <form>
-                    <fieldset class="form-group">
-                        <input class="form-control form-control-lg" type="text" placeholder="Email" />
-                    </fieldset>
-                    <fieldset class="form-group">
-                        <input class="form-control form-control-lg" type="password" placeholder="Password" />
-                    </fieldset>
-                    <div class="text-right">
-                        <button class="btn btn-lg btn-primary pull-xs-right">Sign in</button>
-                    </div>
-                </form>
+                <%= form_with url: signin_path, scope: :session, local: true do |f| %>
+                <fieldset class="form-group">
+                    <%= f.email_field :email, class: "form-control form-control-lg", placeholder: "Email", required: true %>
+                </fieldset>
+                <fieldset class="form-group">
+                    <%= f.password_field :password, class: "form-control form-control-lg", placeholder: "Password", required: true %>
+                </fieldset>
+                <div class="text-right">
+                    <%= f.submit "Sign in", class: "btn btn-lg pull-xs-right btn-primary" %>
+                </div>
+                <% end %>
             </div>
         </div>
     </div>
